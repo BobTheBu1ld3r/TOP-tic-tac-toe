@@ -41,7 +41,25 @@ function Player(name, token) {
 }
 
 function GameController() {
+  const board = GameBoard();
+  board.initialize();
+
   const players = [Player("Player One", "X"), Player("Player Two", "O")];
 
-  return {};
+  let currentPlayer = players[0];
+
+  const switchCurrentPlayer = () =>
+    (currentPlayer = Object.is(currentPlayer, players[0])
+      ? players[1]
+      : players[0]);
+
+  const getCurrentPlayer = () => currentPlayer;
+  let gameState = "start";
+
+  const playRound = (row, column) => {
+    board.addToken(row, column, currentPlayer.token);
+    switchCurrentPlayer();
+  };
+
+  return { getCurrentPlayer, playRound };
 }
