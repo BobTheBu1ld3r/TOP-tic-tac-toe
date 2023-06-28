@@ -36,6 +36,12 @@ function GameBoard() {
   return { initialize, addToken, getBoard, printBoard };
 }
 
+function Player(name, token) {
+  return { name, token };
+}
+
 function GameController() {
+  const players = [Player("Player One", "X"), Player("Player Two", "O")];
+
   return {};
 }
