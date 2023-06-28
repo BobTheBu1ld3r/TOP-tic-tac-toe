@@ -26,5 +26,15 @@ function GameBoard() {
     targetCell.addToken(token);
   };
 
-  return { initialize, addToken };
+  const getBoard = () => board;
+
+  return { initialize, addToken, getBoard };
 }
+
+console.log("hi");
+const board = GameBoard();
+board.initialize();
+board.addToken(0, 0, "X");
+board.addToken(0, 1, "X");
+board.addToken(0, 2, "X");
+console.log(board.getBoard());
