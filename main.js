@@ -28,7 +28,12 @@ function GameBoard() {
 
   const getBoard = () => board;
 
-  return { initialize, addToken, getBoard };
+  const printBoard = () =>
+    console.log(
+      board.map((row) => row.map((cell) => cell.getToken())).join("\n")
+    );
+
+  return { initialize, addToken, getBoard, printBoard };
 }
 
 console.log("hi");
@@ -37,4 +42,4 @@ board.initialize();
 board.addToken(0, 0, "X");
 board.addToken(0, 1, "X");
 board.addToken(0, 2, "X");
-console.log(board.getBoard());
+board.printBoard();
