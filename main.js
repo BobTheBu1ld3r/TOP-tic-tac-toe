@@ -19,4 +19,12 @@ function GameBoard() {
       }
     }
   };
+
+  const addToken = (row, column, token) => {
+    const targetCell = board[row][column];
+    if (targetCell.getToken() !== " ") return;
+    targetCell.addToken(token);
+  };
+
+  return { initialize, addToken };
 }
