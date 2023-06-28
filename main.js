@@ -36,10 +36,6 @@ function GameBoard() {
   return { initialize, addToken, getBoard, printBoard };
 }
 
-console.log("hi");
-const board = GameBoard();
-board.initialize();
-board.addToken(0, 0, "X");
-board.addToken(0, 1, "X");
-board.addToken(0, 2, "X");
-board.printBoard();
+function GameController() {
+  return {};
+}
