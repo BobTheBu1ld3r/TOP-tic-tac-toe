@@ -27,18 +27,33 @@ body {
   justify-content: center;
   align-items: center;
   gap: 80px;
+  font-family: "Work Sans", sans-serif;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
   gap: 20px;
   background-color: var(--primary);
 }
 
 .cell {
   background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.cell.cross {
+  font-size: 120px;
+  font-weight: 700;
+}
+
+.cell.circle {
+  font-size: 90px;
+  font-weight: 11000;
 }
 
 .restart-button {
@@ -53,6 +68,8 @@ body {
   border: none;
   border-radius: 8px;
   text-transform: uppercase;
+  font-family: inherit;
+  letter-spacing: 1.3px;
 }
 
 .start-page {
