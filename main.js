@@ -33,8 +33,74 @@ function GameBoard() {
       board.map((row) => row.map((cell) => cell.getToken())).join("\n")
     );
 
-  return { initialize, addToken, getBoard, printBoard };
+  const isWin = (token) => {
+    const winStates = [
+      [
+        [0, 0],
+        [0, 1],
+        [0, 2],
+      ],
+      [
+        [1, 0],
+        [1, 1],
+        [1, 2],
+      ],
+      [
+        [2, 0],
+        [2, 1],
+        [2, 2],
+      ],
+      [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+      ],
+      [
+        [0, 1],
+        [1, 1],
+        [2, 1],
+      ],
+      [
+        [0, 2],
+        [1, 2],
+        [2, 2],
+      ],
+      [
+        [0, 0],
+        [1, 1],
+        [2, 2],
+      ],
+      [
+        [2, 0],
+        [1, 1],
+        [0, 2],
+      ],
+    ];
+
+    console.log(
+      winStates.some((winState) =>
+        winState.every((point) => {
+          [row, column] = [...point];
+          return board[row][column].getToken() === token;
+        })
+      )
+    );
+  };
+
+  return { initialize, addToken, getBoard, printBoard, isWin };
 }
+
+const game = GameBoard();
+game.initialize();
+game.isWin("X");
+game.addToken(2, 0, "X");
+game.printBoard();
+game.addToken(1, 1, "X");
+game.printBoard();
+game.isWin("X");
+game.addToken(0, 2, "X");
+game.printBoard();
+game.isWin("X");
 
 function Player(name, token) {
   return { name, token, score: 0 };
