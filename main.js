@@ -48,6 +48,8 @@ function GameController() {
 
   let startPlayer = players[0];
   let currentPlayer;
+  const gameStates = ["start", "play", "gameEnd"];
+  let gameState = gameStates[0];
 
   const startGame = (playerOneName, playerTwoName) => {
     players[0].name = playerOneName;
@@ -55,10 +57,14 @@ function GameController() {
     startPlayer = players[0];
     currentPlayer = startPlayer;
     board.initialize();
+    gameState = gameStates[1];
   };
 
   const rematch = () => {
     switchStartPlayer();
+    currentPlayer = startPlayer;
+    board.initialize();
+    gameState = gameStates[1];
   };
 
   const switchStartPlayer = () =>
@@ -72,12 +78,13 @@ function GameController() {
       : players[0]);
 
   const getCurrentPlayer = () => currentPlayer;
-  let gameState = "start";
+
+  const getGameState = () => gameState;
 
   const playRound = (row, column) => {
     board.addToken(row, column, currentPlayer.token);
     switchCurrentPlayer();
   };
 
-  return { getCurrentPlayer, playRound };
+  return { getCurrentPlayer, getGameState, playRound, startGame, rematch };
 }
