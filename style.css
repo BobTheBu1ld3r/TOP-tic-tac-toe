@@ -46,16 +46,6 @@ body {
   color: var(--primary);
 }
 
-.cell.cross {
-  font-size: 120px;
-  font-weight: 700;
-}
-
-.cell.circle {
-  font-size: 90px;
-  font-weight: 11000;
-}
-
 .restart-button {
   display: block;
   height: 43px;
@@ -70,6 +60,19 @@ body {
   text-transform: uppercase;
   font-family: inherit;
   letter-spacing: 1.3px;
+}
+
+.circle {
+  width: 0;
+  height: 0;
+  border: 25px solid var(--background);
+  outline: 20px solid var(--primary);
+  border-radius: 50%;
+}
+
+.cross {
+  font-size: 120px;
+  font-weight: 700;
 }
 
 .start-page {
