@@ -1,0 +1,18 @@
+html {
+  box-sizing: border-box;
+}
+
+:root {
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
