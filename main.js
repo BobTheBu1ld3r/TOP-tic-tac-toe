@@ -37,7 +37,7 @@ function GameBoard() {
 }
 
 function Player(name, token) {
-  return { name, token };
+  return { name, token, score: 0 };
 }
 
 function GameController() {
@@ -46,7 +46,25 @@ function GameController() {
 
   const players = [Player("Player One", "X"), Player("Player Two", "O")];
 
-  let currentPlayer = players[0];
+  let startPlayer = players[0];
+  let currentPlayer;
+
+  const startGame = (playerOneName, playerTwoName) => {
+    players[0].name = playerOneName;
+    players[1].name = playerTwoName;
+    startPlayer = players[0];
+    currentPlayer = startPlayer;
+    board.initialize();
+  };
+
+  const rematch = () => {
+    switchStartPlayer();
+  };
+
+  const switchStartPlayer = () =>
+    (startPlayer = Object.is(startPlayer, players[0])
+      ? players[1]
+      : players[0]);
 
   const switchCurrentPlayer = () =>
     (currentPlayer = Object.is(currentPlayer, players[0])
