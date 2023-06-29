@@ -149,3 +149,5 @@ function GameController() {
 
   return { getCurrentPlayer, getGameState, playRound, startGame, rematch };
 }
+
+function ScreenController() {}
