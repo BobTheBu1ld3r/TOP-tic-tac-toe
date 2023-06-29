@@ -77,30 +77,19 @@ function GameBoard() {
       ],
     ];
 
-    console.log(
-      winStates.some((winState) =>
-        winState.every((point) => {
-          [row, column] = [...point];
-          return board[row][column].getToken() === token;
-        })
-      )
+    return winStates.some((winState) =>
+      winState.every((point) => {
+        [row, column] = [...point];
+        return board[row][column].getToken() === token;
+      })
     );
   };
 
-  return { initialize, addToken, getBoard, printBoard, isWin };
-}
+  const isDraw = () =>
+    board.every((row) => row.every((cell) => cell.getToken() !== " "));
 
-const game = GameBoard();
-game.initialize();
-game.isWin("X");
-game.addToken(2, 0, "X");
-game.printBoard();
-game.addToken(1, 1, "X");
-game.printBoard();
-game.isWin("X");
-game.addToken(0, 2, "X");
-game.printBoard();
-game.isWin("X");
+  return { initialize, addToken, getBoard, printBoard, isWin, isDraw };
+}
 
 function Player(name, token) {
   return { name, token, score: 0 };
