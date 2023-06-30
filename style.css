@@ -8,6 +8,7 @@ html {
   --primary: #9065b1;
   --background: #272a45;
   --light: rgba(191, 135, 187, 65%);
+  --light-bcg: rgba(101, 67, 109, 54%);
 }
 
 *,
@@ -46,7 +47,7 @@ body {
   color: var(--primary);
 }
 
-.restart-button {
+button {
   display: block;
   height: 43px;
   width: 118px;
@@ -77,5 +78,44 @@ body {
 
 .start-page {
   position: absolute;
-  visibility: none;
+  /* visibility: hidden; */
+  z-index: 10;
+
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  height: 300px;
+  width: 500px;
+
+  border: 10px solid var(--primary);
+  background-color: var(--light-bcg);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container label {
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.modal-container input {
+  height: 46px;
+  width: 302px;
+  border-radius: 16px;
+  border: none;
+  background-color: white;
+  margin-bottom: 40px;
 }
