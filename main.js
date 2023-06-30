@@ -188,8 +188,6 @@ function ScreenController() {
 
   function cellClickHandler(e) {
     const targetCell = e.target;
-    console.log(targetCell.dataset.rowIndex);
-    console.log(targetCell.dataset.columnIndex);
     game.playRound(targetCell.dataset.rowIndex, targetCell.dataset.columnIndex);
     renderBoard();
   }
