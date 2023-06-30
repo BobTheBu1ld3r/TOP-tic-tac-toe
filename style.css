@@ -29,6 +29,9 @@ body {
   align-items: center;
   gap: 80px;
   font-family: "Work Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
 }
 
 .board {
@@ -76,7 +79,7 @@ button {
   font-weight: 700;
 }
 
-.start-page {
+.page {
   position: absolute;
   visibility: hidden;
   z-index: -10;
@@ -90,9 +93,9 @@ button {
   align-items: center;
 }
 
-.start-page.visible {
+.visible {
   z-index: 10;
-  visibility: none;
+  visibility: visible;
 }
 
 .modal-container {
@@ -131,4 +134,14 @@ button {
 .modal-container input:active,
 .modal-container input:focus-visible {
   outline: none;
+}
+
+.game-end-screen {
+  position: absolute;
+}
+
+.button-container {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
 }
