@@ -78,8 +78,8 @@ button {
 
 .start-page {
   position: absolute;
-  /* visibility: hidden; */
-  z-index: 10;
+  visibility: hidden;
+  z-index: -10;
 
   height: 100vh;
   width: 100vw;
@@ -88,6 +88,11 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.start-page.visible {
+  z-index: 10;
+  visibility: none;
 }
 
 .modal-container {
