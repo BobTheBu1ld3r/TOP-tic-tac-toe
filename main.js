@@ -166,23 +166,33 @@ function ScreenController() {
   const renderBoard = () => {
     const boardDiv = document.querySelector(".board");
     boardDiv.textContent = "";
-    board.forEach((row) => {
-      row.forEach((cell) => {
+    board.forEach((row, rowIndex) => {
+      row.forEach((cell, columnIndex) => {
         const newCell = document.createElement("div");
         newCell.classList.add("cell");
+        newCell.dataset.rowIndex = rowIndex;
+        newCell.dataset.columnIndex = columnIndex;
         const token = document.createElement("div");
         if (cell.getToken() === "X") {
           token.classList.add("cross");
           token.textContent = "✕";
         } else if (cell.getToken() === "O") token.classList.add("circle");
         newCell.appendChild(token);
+        newCell.addEventListener("click", cellClickHandler);
         boardDiv.appendChild(newCell);
       });
     });
   };
 
-  game.playRound(0, 0);
   renderBoard();
+
+  function cellClickHandler(e) {
+    const targetCell = e.target;
+    console.log(targetCell.dataset.rowIndex);
+    console.log(targetCell.dataset.columnIndex);
+    game.playRound(targetCell.dataset.rowIndex, targetCell.dataset.columnIndex);
+    renderBoard();
+  }
 }
 
 ScreenController();
