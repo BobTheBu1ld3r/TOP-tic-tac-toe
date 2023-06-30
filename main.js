@@ -138,7 +138,7 @@ function GameController() {
 
   const playRound = (row, column) => {
     board.addToken(row, column, currentPlayer.token);
-    if (board.isWin()) {
+    if (board.isWin(currentPlayer.token)) {
       currentPlayer.score++;
       gameState = gameStates[2];
     } else if (board.isDraw()) {
@@ -190,6 +190,7 @@ function ScreenController() {
     const targetCell = e.target;
     game.playRound(targetCell.dataset.rowIndex, targetCell.dataset.columnIndex);
     renderBoard();
+    console.log(game.getGameState());
   }
 }
 
