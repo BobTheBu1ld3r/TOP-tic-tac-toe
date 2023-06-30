@@ -147,7 +147,16 @@ function GameController() {
     switchCurrentPlayer();
   };
 
-  return { getCurrentPlayer, getGameState, playRound, startGame, rematch };
+  startGame();
+
+  return {
+    getCurrentPlayer,
+    getGameState,
+    playRound,
+    startGame,
+    rematch,
+    getBoard: board.getBoard,
+  };
 }
 
 function ScreenController() {
@@ -156,15 +165,24 @@ function ScreenController() {
 
   const renderBoard = () => {
     const boardDiv = document.querySelector(".board");
+    boardDiv.textContent = "";
     board.forEach((row) => {
       row.forEach((cell) => {
         const newCell = document.createElement("div");
         newCell.classList.add("cell");
         const token = document.createElement("div");
-        const className = cell.getToken() === "X" ? "cross" : "circle";
-        if (className == "cross") token.textContent = "✕";
-        token.classList.add(className);
+        if (cell.getToken() === "X") {
+          token.classList.add("cross");
+          token.textContent = "✕";
+        } else if (cell.getToken() === "O") token.classList.add("circle");
+        newCell.appendChild(token);
+        boardDiv.appendChild(newCell);
       });
     });
   };
+
+  game.playRound(0, 0);
+  renderBoard();
 }
+
+ScreenController();
