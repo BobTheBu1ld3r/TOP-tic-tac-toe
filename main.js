@@ -150,4 +150,21 @@ function GameController() {
   return { getCurrentPlayer, getGameState, playRound, startGame, rematch };
 }
 
-function ScreenController() {}
+function ScreenController() {
+  const game = GameController();
+  const board = game.getBoard();
+
+  const renderBoard = () => {
+    const boardDiv = document.querySelector(".board");
+    board.forEach((row) => {
+      row.forEach((cell) => {
+        const newCell = document.createElement("div");
+        newCell.classList.add("cell");
+        const token = document.createElement("div");
+        const className = cell.getToken() === "X" ? "cross" : "circle";
+        if (className == "cross") token.textContent = "✕";
+        token.classList.add(className);
+      });
+    });
+  };
+}
