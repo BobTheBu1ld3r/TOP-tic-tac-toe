@@ -134,6 +134,8 @@ function GameController() {
 
   const getCurrentPlayer = () => currentPlayer;
 
+  const getPlayers = () => players;
+
   const getGameState = () => gameState;
 
   const playRound = (row, column) => {
@@ -151,6 +153,7 @@ function GameController() {
 
   return {
     getCurrentPlayer,
+    getPlayers,
     getGameState,
     playRound,
     startGame,
@@ -189,6 +192,10 @@ function ScreenController() {
       ".current-player-display"
     );
     curentPlayerDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
+    const playerScoreDisplay = document.querySelector(".player-score-display");
+    playerScoreDisplay.textContent = `${game.getPlayers()[0].score} : ${
+      game.getPlayers()[1].score
+    }`;
     const boardDiv = document.querySelector(".board");
     boardDiv.textContent = "";
     board.forEach((row, rowIndex) => {
