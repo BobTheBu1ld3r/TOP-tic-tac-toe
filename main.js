@@ -165,6 +165,21 @@ function ScreenController() {
   const gameEndScreen = document.querySelector(".game-end-screen");
   const gameStartScreen = document.querySelector(".start-page");
 
+  const playerNames = [];
+  function submitPlayerName() {
+    const input = document.querySelector("input");
+    playerNames.push(input.value);
+    console.log(playerNames);
+    if (playerNames.length == 2) {
+      game.startGame();
+      gameStartScreen.classList.remove("visible");
+      return;
+    }
+  }
+
+  const nameSubmitButton = document.querySelector(".submit");
+  nameSubmitButton.addEventListener("click", submitPlayerName);
+
   const renderBoard = () => {
     const boardDiv = document.querySelector(".board");
     boardDiv.textContent = "";
@@ -202,14 +217,13 @@ function ScreenController() {
   const quitButton = document.querySelector(".quit");
   quitButton.addEventListener("click", quitClickHandler);
 
-  function rematchClickHandler(e) {
+  function rematchClickHandler() {
     game.rematch();
     gameEndScreen.classList.remove("visible");
     renderBoard();
   }
 
-  function quitClickHandler(e) {
-    game.startGame();
+  function quitClickHandler() {
     gameEndScreen.classList.remove("visible");
     gameStartScreen.classList.add("visible");
   }
