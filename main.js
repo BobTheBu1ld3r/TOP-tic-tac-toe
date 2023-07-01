@@ -172,6 +172,7 @@ function ScreenController() {
   function submitPlayerName() {
     const input = document.querySelector("input");
     playerNames.push(input.value);
+    input.value = "";
     console.log(playerNames);
     if (playerNames.length == 2) {
       game.startGame(...playerNames);
@@ -224,6 +225,7 @@ function ScreenController() {
     renderBoard();
     if (game.getGameState() === "gameEnd") {
       gameEndScreen.classList.add("visible");
+      const winnerMessage = document.querySelector(".winner-message");
     }
   }
 
