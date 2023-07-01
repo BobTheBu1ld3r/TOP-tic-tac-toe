@@ -171,7 +171,7 @@ function ScreenController() {
     playerNames.push(input.value);
     console.log(playerNames);
     if (playerNames.length == 2) {
-      game.startGame();
+      game.startGame(...playerNames);
       gameStartScreen.classList.remove("visible");
       return;
     }
