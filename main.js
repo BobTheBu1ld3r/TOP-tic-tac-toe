@@ -229,8 +229,8 @@ function ScreenController() {
 
   const rematchButton = document.querySelector(".rematch");
   rematchButton.addEventListener("click", rematchClickHandler);
-  const quitButton = document.querySelector(".quit");
-  quitButton.addEventListener("click", quitClickHandler);
+  const restartButton = document.querySelector(".restart");
+  restartButton.addEventListener("click", restartClickHandler);
 
   function rematchClickHandler() {
     game.rematch();
@@ -238,7 +238,7 @@ function ScreenController() {
     renderBoard();
   }
 
-  function quitClickHandler() {
+  function restartClickHandler() {
     gameEndScreen.classList.remove("visible");
     gameStartScreen.classList.add("visible");
   }
