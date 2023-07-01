@@ -162,6 +162,8 @@ function GameController() {
 function ScreenController() {
   const game = GameController();
   const board = game.getBoard();
+  const gameEndScreen = document.querySelector(".game-end-screen");
+  const gameStartScreen = document.querySelector(".start-page");
 
   const renderBoard = () => {
     const boardDiv = document.querySelector(".board");
@@ -190,7 +192,26 @@ function ScreenController() {
     const targetCell = e.target;
     game.playRound(targetCell.dataset.rowIndex, targetCell.dataset.columnIndex);
     renderBoard();
-    console.log(game.getGameState());
+    if (game.getGameState() === "gameEnd") {
+      gameEndScreen.classList.add("visible");
+    }
+  }
+
+  const rematchButton = document.querySelector(".rematch");
+  rematchButton.addEventListener("click", rematchClickHandler);
+  const quitButton = document.querySelector(".quit");
+  quitButton.addEventListener("click", quitClickHandler);
+
+  function rematchClickHandler(e) {
+    game.rematch();
+    gameEndScreen.classList.remove("visible");
+    renderBoard();
+  }
+
+  function quitClickHandler(e) {
+    game.startGame();
+    gameEndScreen.classList.remove("visible");
+    gameStartScreen.classList.add("visible");
   }
 }
 
