@@ -165,22 +165,30 @@ function ScreenController() {
   const gameEndScreen = document.querySelector(".game-end-screen");
   const gameStartScreen = document.querySelector(".start-page");
 
-  const playerNames = [];
+  let playerNames = [];
   function submitPlayerName() {
     const input = document.querySelector("input");
     playerNames.push(input.value);
     console.log(playerNames);
     if (playerNames.length == 2) {
       game.startGame(...playerNames);
+      renderBoard();
+      playerNames = [];
       gameStartScreen.classList.remove("visible");
       return;
     }
+    const label = document.querySelector("label");
+    label.textContent = "Player Two Name";
   }
 
   const nameSubmitButton = document.querySelector(".submit");
   nameSubmitButton.addEventListener("click", submitPlayerName);
 
   const renderBoard = () => {
+    const curentPlayerDisplay = document.querySelector(
+      ".current-player-display"
+    );
+    curentPlayerDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
     const boardDiv = document.querySelector(".board");
     boardDiv.textContent = "";
     board.forEach((row, rowIndex) => {
