@@ -140,6 +140,8 @@ function GameController() {
 
   const gameEndInfo = {};
 
+  const getEndGameInfo = () => gameEndInfo;
+
   const playRound = (row, column) => {
     board.addToken(row, column, currentPlayer.token);
     if (board.isWin(currentPlayer.token)) {
@@ -164,6 +166,7 @@ function GameController() {
     getCurrentPlayer,
     getPlayers,
     getGameState,
+    getEndGameInfo,
     playRound,
     startGame,
     rematch,
