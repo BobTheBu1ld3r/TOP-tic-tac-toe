@@ -138,13 +138,22 @@ function GameController() {
 
   const getGameState = () => gameState;
 
+  const gameEndInfo = {};
+
   const playRound = (row, column) => {
     board.addToken(row, column, currentPlayer.token);
     if (board.isWin(currentPlayer.token)) {
       currentPlayer.score++;
       gameState = gameStates[2];
+      gameWinInfo = {
+        endState: "win",
+        winnerName: currentPlayer.name,
+      };
     } else if (board.isDraw()) {
       gameState = gameStates[2];
+      gameWinInfo = {
+        endState: "draw",
+      };
     }
     switchCurrentPlayer();
   };
