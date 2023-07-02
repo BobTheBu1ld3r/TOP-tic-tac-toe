@@ -27,11 +27,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 80px;
   font-family: "Work Sans", sans-serif;
   font-size: 32px;
   font-weight: 900;
   color: white;
+}
+
+.player-score-display {
+  margin-bottom: 50px;
 }
 
 .board {
@@ -40,6 +43,7 @@ body {
   grid-template-rows: repeat(3, 120px);
   gap: 20px;
   background-color: var(--primary);
+  margin-bottom: 60px;
 }
 
 .cell {
