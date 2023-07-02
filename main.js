@@ -108,7 +108,9 @@ function GameController() {
 
   const startGame = (playerOneName, playerTwoName) => {
     players[0].name = playerOneName;
+    players[0].score = 0;
     players[1].name = playerTwoName;
+    players[1].score = 0;
     startPlayer = players[0];
     currentPlayer = startPlayer;
     board.initialize();
