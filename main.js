@@ -147,15 +147,11 @@ function GameController() {
     if (board.isWin(currentPlayer.token)) {
       currentPlayer.score++;
       gameState = gameStates[2];
-      gameWinInfo = {
-        endState: "win",
-        winnerName: currentPlayer.name,
-      };
+      gameEndInfo.endState = "win";
+      gameEndInfo.winnerName = currentPlayer.name;
     } else if (board.isDraw()) {
       gameState = gameStates[2];
-      gameWinInfo = {
-        endState: "draw",
-      };
+      gameEndInfo.endState = "draw";
     }
     switchCurrentPlayer();
   };
@@ -245,7 +241,14 @@ function ScreenController() {
     if (game.getGameState() === "gameEnd") {
       gameEndScreen.classList.add("visible");
       rematchButton.focus();
-      const winnerMessage = document.querySelector(".winner-message");
+      let winnerMessage;
+      const gameEndInfo = game.getEndGameInfo();
+      console.log(gameEndInfo.endState);
+      if (gameEndInfo.endState === "win")
+        winnerMessage = `${gameEndInfo.winnerName} has won`;
+      else winnerMessage = `It's a draw`;
+      const winnerMessageDisplay = document.querySelector(".winner-message");
+      winnerMessageDisplay.textContent = winnerMessage;
     }
   }
 
