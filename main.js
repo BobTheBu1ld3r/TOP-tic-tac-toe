@@ -219,20 +219,21 @@ function ScreenController() {
 
   renderBoard();
 
+  const rematchButton = document.querySelector(".rematch");
+  rematchButton.addEventListener("click", rematchClickHandler);
+  const restartButton = document.querySelector(".restart");
+  restartButton.addEventListener("click", restartClickHandler);
+
   function cellClickHandler(e) {
     const targetCell = e.target;
     game.playRound(targetCell.dataset.rowIndex, targetCell.dataset.columnIndex);
     renderBoard();
     if (game.getGameState() === "gameEnd") {
       gameEndScreen.classList.add("visible");
+      rematchButton.focus();
       const winnerMessage = document.querySelector(".winner-message");
     }
   }
-
-  const rematchButton = document.querySelector(".rematch");
-  rematchButton.addEventListener("click", rematchClickHandler);
-  const restartButton = document.querySelector(".restart");
-  restartButton.addEventListener("click", restartClickHandler);
 
   function rematchClickHandler() {
     game.rematch();
