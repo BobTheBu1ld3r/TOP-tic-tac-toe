@@ -179,6 +179,7 @@ function ScreenController() {
   let playerNames = [];
   function submitPlayerName() {
     const input = document.querySelector("input");
+    if (!input.value) return;
     playerNames.push(input.value);
     input.value = "";
     console.log(playerNames);
