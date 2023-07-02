@@ -70,6 +70,13 @@ button {
   letter-spacing: 1.3px;
 }
 
+button:focus-visible,
+button:focus,
+button:hover {
+  outline-offset: 3px;
+  outline: 2px solid var(--primary);
+}
+
 .circle {
   width: 0;
   height: 0;
