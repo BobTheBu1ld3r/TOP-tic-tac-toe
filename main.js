@@ -221,8 +221,10 @@ function ScreenController() {
 
   const rematchButton = document.querySelector(".rematch");
   rematchButton.addEventListener("click", rematchClickHandler);
-  const restartButton = document.querySelector(".restart");
-  restartButton.addEventListener("click", restartClickHandler);
+  const restartButton = document.querySelectorAll(".restart");
+  restartButton.forEach((button) =>
+    button.addEventListener("click", restartClickHandler)
+  );
 
   function cellClickHandler(e) {
     const targetCell = e.target;
