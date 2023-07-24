@@ -184,7 +184,6 @@ function ScreenController() {
     if (!input.value) return;
     playerNames.push(input.value);
     input.value = "";
-    console.log(playerNames);
     const label = document.querySelector("label");
     if (playerNames.length == 2) {
       label.textContent = "Player One Name";
@@ -199,6 +198,12 @@ function ScreenController() {
 
   const nameSubmitButton = document.querySelector(".submit");
   nameSubmitButton.addEventListener("click", submitPlayerName);
+  window.addEventListener("keydown", (event) => {
+    if ((event.key = "Enter")) {
+      console.log("hi");
+      submitPlayerName();
+    }
+  });
 
   const renderBoard = () => {
     const curentPlayerDisplay = document.querySelector(
