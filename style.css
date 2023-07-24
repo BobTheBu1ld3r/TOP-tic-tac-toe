@@ -46,6 +46,28 @@ body {
   margin: 0;
 }
 
+.player-one-name::before {
+  content: "✕";
+  position: relative;
+  top: 3px;
+  margin-right: 10px;
+  color: var(--primary);
+}
+
+.player-two-name::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+  top: -3px;
+
+  width: 0;
+  height: 0;
+  border: 5px solid var(--background);
+  outline: 5.5px solid var(--primary);
+  border-radius: 50%;
+}
+
 .player-one-score {
   text-align: end;
 }
