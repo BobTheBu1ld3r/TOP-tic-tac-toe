@@ -23,22 +23,41 @@ body {
   height: 100vh;
   background-color: var(--background);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-family: "Work Sans", sans-serif;
   font-size: 32px;
   font-weight: 900;
   color: white;
 }
 
-.player-score-display {
-  margin-bottom: 50px;
+.player-info-display {
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.player-info-display p {
+  margin: 0;
+}
+
+.player-one-score {
+  text-align: end;
+}
+
+.current-player-display {
+  margin: 20px auto;
 }
 
 .board {
   display: grid;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
   grid-template-columns: repeat(3, 120px);
   grid-template-rows: repeat(3, 120px);
   gap: 20px;
@@ -70,6 +89,10 @@ button {
   letter-spacing: 1.3px;
 }
 
+button.main-button {
+  margin: 0 auto;
+}
+
 button:focus-visible,
 button:focus,
 button:hover {
@@ -94,6 +117,9 @@ button:hover {
   position: absolute;
   visibility: hidden;
   z-index: -10;
+
+  top: 0;
+  left: 0;
 
   height: 100vh;
   width: 100vw;
