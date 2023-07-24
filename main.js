@@ -210,10 +210,19 @@ function ScreenController() {
       ".current-player-display"
     );
     curentPlayerDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
+
+    const playerOneName = document.querySelector(".player-one-name");
+    playerOneName.textContent = game.getPlayers()[0].name;
+
+    const playerTwoName = document.querySelector(".player-two-name");
+    playerTwoName.textContent = game.getPlayers()[1].name;
+
     const playerOneScore = document.querySelector(".player-one-score");
     playerOneScore.textContent = game.getPlayers()[0].score;
+
     const playerTwoScore = document.querySelector(".player-two-score");
     playerTwoScore.textContent = game.getPlayers()[1].score;
+
     const boardDiv = document.querySelector(".board");
     boardDiv.textContent = "";
     board.forEach((row, rowIndex) => {
