@@ -199,7 +199,7 @@ function ScreenController() {
   const nameSubmitButton = document.querySelector(".submit");
   nameSubmitButton.addEventListener("click", submitPlayerName);
   window.addEventListener("keydown", (event) => {
-    if ((event.key = "Enter")) {
+    if (event.key == "Enter") {
       console.log("hi");
       submitPlayerName();
     }
@@ -210,10 +210,10 @@ function ScreenController() {
       ".current-player-display"
     );
     curentPlayerDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
-    const playerScoreDisplay = document.querySelector(".player-score-display");
-    playerScoreDisplay.textContent = `${game.getPlayers()[0].score} : ${
-      game.getPlayers()[1].score
-    }`;
+    const playerOneScore = document.querySelector(".player-one-score");
+    playerOneScore.textContent = game.getPlayers()[0].score;
+    const playerTwoScore = document.querySelector(".player-two-score");
+    playerTwoScore.textContent = game.getPlayers()[1].score;
     const boardDiv = document.querySelector(".board");
     boardDiv.textContent = "";
     board.forEach((row, rowIndex) => {
