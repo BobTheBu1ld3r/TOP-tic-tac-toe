@@ -185,14 +185,15 @@ function ScreenController() {
     playerNames.push(input.value);
     input.value = "";
     console.log(playerNames);
+    const label = document.querySelector("label");
     if (playerNames.length == 2) {
+      label.textContent = "Player One Name";
       game.startGame(...playerNames);
       renderBoard();
       playerNames = [];
       gameStartScreen.classList.remove("visible");
       return;
     }
-    const label = document.querySelector("label");
     label.textContent = "Player Two Name";
   }
 
